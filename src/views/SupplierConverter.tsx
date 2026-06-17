@@ -16,6 +16,7 @@ import MappingEditor from '../components/MappingEditor';
 import ColumnPreview from '../components/ColumnPreview';
 import { detectHeaderRow, parseFromHeaderRow } from '../utils/headers';
 import PresetBar from '../components/PresetBar';
+import DataQualityDashboard from '../components/DataQualityDashboard';
 import type { ParsedFile, BannerInfo, ColRef, Preset, SupplierConverterMappings } from '../types';
 
 const PRODUCTSOORT_HINTS  = [
@@ -1071,6 +1072,8 @@ export default function SupplierConverter() {
             <p style={{ fontSize: 12, color: 'var(--text-secondary)', marginBottom: 8 }}>{t('scPreviewCardDesc')}</p>
             <PreviewTable cols={[...OUTPUT_COLS]} data={outputData} />
           </div>
+
+          <DataQualityDashboard data={outputData} mappingStore={mappingStore} lang={lang} />
 
           <div className="actions">
             <button className="btn" onClick={() => { setStep(2); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>{t('scBack')}</button>
